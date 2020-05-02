@@ -29,7 +29,7 @@ let mapStateToProps = (state) => {
         MessagesPage: state.MessagesPage
     }
 }
-let mapDispatchToProps = (dispatch) =>  {
+let mapDispatchToProps = (dispatch) => {
     return {
         addMessage: () => {
             dispatch(addMessageActionCreate())
