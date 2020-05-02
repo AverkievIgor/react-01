@@ -1,0 +1,22 @@
+.post{
+    width: 600px;
+    height: auto;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.avatar{
+
+}
+
+.avatar img{
+    width: 50px;
+    border-radius: 50px;
+}
+
+.like img{
+    width: 50px;
+    height: auto;
+    border-radius: 500px;
+}
