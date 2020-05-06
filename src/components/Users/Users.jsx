@@ -1,5 +1,5 @@
 import React from "react";
-import style from './Users.modudule.css'
+import styles from './Users.modudule.css'
 
 let Users = (props) =>{
     if(props.users.length===0){
@@ -45,15 +45,11 @@ let Users = (props) =>{
     return  <div>{
         props.users.map( u => <div key={u.id}>
             <span>
-                <div><img src={u.photoUrl} className={style.usersPhoto} /></div>
+                <div><img src={u.photoUrl} className={styles.usersPhoto} /></div>
                 <div>
                     {u.followed
-                    ? <button onClick={()=>{
-                        props.follow(u.id)
-                    }}>Follow</button>
-                    : <button onClick={()=>{
-                        props.unfollow(u.id)
-                    }}>Unfollow</button>}
+                    ? <button onClick={()=>{props.unfollow(u.id)}}>Unfollow</button>
+                    : <button onClick={()=>{props.follow(u.id)}}>Follow</button>}
                 </div>
             </span>
             <span>
