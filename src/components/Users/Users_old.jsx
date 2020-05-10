@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './Users.modudule.css'
+import styles from './Users.module.css'
 import * as axios from "axios";
 import userPhoto from '../../img/pokemon2.png'
 
