@@ -9,3 +9,14 @@
     padding-left: 25px;
     padding-top: 10px;
 }
+
+.loginBlock {
+    float: right;
+    padding-top: 15px;
+    padding-right: 35px;
+}
+
+.loginBlock a {
+
+    color: blue;
+}
