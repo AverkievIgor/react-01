@@ -21,7 +21,7 @@ let initialState = {
         {id: 6, photoUrl:'https://avatars.mds.yandex.net/get-pdb/1221986/7f52a674-7f47-4001-b644-4e8b9494d379/s1200?webp=false',
             followed: true, fullName: 'Stamiho', status: 'Loop', location: {city: 'Masugino', country:'Russia'}}
     */],
-    pageSize: 5,
+    pageSize: 100,
     totalUserCount: 0,
     currentPage: 1,
     isFetching: false
