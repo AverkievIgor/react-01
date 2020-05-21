@@ -12,7 +12,7 @@ let Users = (props) =>{
     for (let i=1; i<= pagesCount; i++){
         pages.push(i)
     }
-
+    debugger;
     return <div>
         <div>
             {pages.map(p=>{
@@ -31,36 +31,25 @@ let Users = (props) =>{
                 </div>
                 <div>
                     {u.followed
-                        ? <button onClick={()=>{
-                            /*axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                withCredentials: true,
-                                headers: {'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'}
-                            })
-                                .then(response => {
-                                    if (response.data.resultCode == 0) {
-                                        props.unfollow(u.id)
-                                    }
-                                });*/
+                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={s.button} onClick={()=>{
+                            props.toggleFollowingInProgress(true, u.id);
                             useraAPI.delUsers(u.id).then(data => {
                                 if (data.resultCode == 0) {
                                     props.unfollow(u.id)
                                 }
+                                props.toggleFollowingInProgress(false, u.id);
                             })
-
                         }}>Unfollow</button>
-                        :<button onClick={()=>{
-                            /*axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                withCredentials: true,
-                                headers: {'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'}})*/
+
+                        :<button disabled={props.followingInProgress.some(id => id === u.id)}  className={s.button} onClick={()=>{
+                            props.toggleFollowingInProgress(true,u.id);
                             useraAPI.delUsers(u.id).then(data => {
                                     if (data.resultCode == 0) {
                                         props.follow(u.id)
                                     }
+                                props.toggleFollowingInProgress(false, u.id);
                                 });
-
-
                         }}>Follow</button>}
-
                 </div>
             </span>
             <span>
