@@ -34,7 +34,7 @@ const Messages = (props) => {
         props.MessageChange(text);
     }
 
-debugger
+
     return (
 
         <div className={s.dialogs}>

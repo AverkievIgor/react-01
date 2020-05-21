@@ -2,7 +2,7 @@ import React from "react";
 import s from './Users.module.css'
 import userPhoto from '../../img/pokemon2.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {useraAPI} from "../api/api";
 
 
 let Users = (props) =>{
@@ -32,7 +32,7 @@ let Users = (props) =>{
                 <div>
                     {u.followed
                         ? <button onClick={()=>{
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                            /*axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                 withCredentials: true,
                                 headers: {'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'}
                             })
@@ -40,16 +40,20 @@ let Users = (props) =>{
                                     if (response.data.resultCode == 0) {
                                         props.unfollow(u.id)
                                     }
-                                });
-
+                                });*/
+                            useraAPI.delUsers(u.id).then(data => {
+                                if (data.resultCode == 0) {
+                                    props.unfollow(u.id)
+                                }
+                            })
 
                         }}>Unfollow</button>
                         :<button onClick={()=>{
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                            /*axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                 withCredentials: true,
-                                headers: {'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'}})
-                                .then(response => {
-                                    if (response.data.resultCode == 0) {
+                                headers: {'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'}})*/
+                            useraAPI.delUsers(u.id).then(data => {
+                                    if (data.resultCode == 0) {
                                         props.follow(u.id)
                                     }
                                 });
