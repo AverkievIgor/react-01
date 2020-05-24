@@ -1,5 +1,4 @@
 import {useraAPI} from "../components/api/api";
-
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -117,7 +116,7 @@ export const follow = (userId) => {
 
 export const unfollow = (userId) => {
     return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true,userId));
+        dispatch(toggleFollowingInProgress(true, userId));
         useraAPI.unfollow(userId)
             .then(data => {
                 if (data.resultCode == 0) {

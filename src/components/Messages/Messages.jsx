@@ -33,9 +33,6 @@ const Messages = (props) => {
         let text = e.target.value;
         props.MessageChange(text);
     }
-    if (!props.isAuth)
-        return <Redirect to={'/login/'}/>;
-
 
             return (
             <div className={s.dialogs}>
