@@ -2,7 +2,6 @@ import React from "react";
 import s from './Users.module.css'
 import userPhoto from '../../img/pokemon2.png'
 import {NavLink} from "react-router-dom";
-import {useraAPI} from "../api/api";
 
 
 let Users = (props) =>{
@@ -12,7 +11,7 @@ let Users = (props) =>{
     for (let i=1; i<= pagesCount; i++){
         pages.push(i)
     }
-    debugger;
+
     return <div>
         <div>
             {pages.map(p=>{
@@ -31,24 +30,12 @@ let Users = (props) =>{
                 </div>
                 <div>
                     {u.followed
-                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={s.button} onClick={()=>{
-                            props.toggleFollowingInProgress(true, u.id);
-                            useraAPI.delUsers(u.id).then(data => {
-                                if (data.resultCode == 0) {
-                                    props.unfollow(u.id)
-                                }
-                                props.toggleFollowingInProgress(false, u.id);
-                            })
+                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}
+                                  onClick={()=>{props.unfollow(u.id);
                         }}>Unfollow</button>
 
-                        :<button disabled={props.followingInProgress.some(id => id === u.id)}  className={s.button} onClick={()=>{
-                            props.toggleFollowingInProgress(true,u.id);
-                            useraAPI.delUsers(u.id).then(data => {
-                                    if (data.resultCode == 0) {
-                                        props.follow(u.id)
-                                    }
-                                props.toggleFollowingInProgress(false, u.id);
-                                });
+                        :<button disabled={props.followingInProgress.some(id => id === u.id)}  className={s.button}
+                                 onClick={()=>{props.follow(u.id);
                         }}>Follow</button>}
                 </div>
             </span>

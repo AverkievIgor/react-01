@@ -1,6 +1,9 @@
+import {useraAPI} from "../components/api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const GET_USER_PROFILE = 'GEt-USER-PROFILE';
 
 let initialState = {
     postData: [
@@ -73,5 +76,12 @@ export const setUserProfile = (profile) => {
         {type: SET_USER_PROFILE, profile}
     )
 }
-
+/*Thunk*/
+export const getUserProfile = (userId) => (dispatch) => {
+    useraAPI.getProfile(userId)
+        .then(response => {
+            dispatch(setUserProfile(response.data));
+        });
+}
+/*----------*/
 export default ProfileReducer;

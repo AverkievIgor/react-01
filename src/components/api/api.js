@@ -15,11 +15,36 @@ const instance = axios.create({
              });
      },
 
-     delUsers(id) {
-         return instance.delete('follow/${id}')
+     follow(userId) {
+         return instance.post('follow/${userId}')
              .then(responce => {
                  return responce.data
              })
+     },
+
+     unfollow(userId) {
+         return instance.delete('follow/${userId}')
+             .then(responce => {
+                 return responce.data
+             })
+     },
+
+     delUser(id) {
+         return instance.delete('follow/${userid}')
+             .then(responce => {
+                 return responce.data
+             })
+     },
+
+     getProfile(userId){
+         return instance.get(`profile/` + userId );
+
+     }
+ }
+
+ export const authAPI = {
+     me() {
+         return instance.get(`auth/me`)
      }
  }
 
