@@ -9,6 +9,7 @@ import MessagesConteiner from "./components/Messages/MessagesConteiner";
 import UsersConteiner from "./components/Users/UsersConteiner";
 import ProfileConteiner from "./components/Profile/ProfileConteiner";
 import HeadersConteiner from "./components/Header/HeadersConteiner";
+import Login from "./components/Login/Login";
 
 const App = (props) => {
 
@@ -23,6 +24,7 @@ const App = (props) => {
                     <Route path='/music' component={Music}/>
                     <Route path='/news' component={News}/>
                     <Route path='/settings' component={Settings}/>
+                    <Route path='/Login' component={Login}/>
                 </div>
             </div>
     );
