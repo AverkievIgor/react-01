@@ -3,7 +3,7 @@ import s from './ProfileInfo.module.css'
 import ava from '../../../img/death.png'
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -18,6 +18,9 @@ const ProfileInfo = (props) => {
                 <div className={s.ava}>
                     <img src={props.profile.photos.large != null ? props.profile.photos.large : ava}/>
                     <div>Full name = {props.profile.fullName}</div>
+                    {/*----STATUS------*/}
+                    <ProfileStatus status={'Follow me my Friend!)'}/>
+                    {/*----STATUS_END------*/}
                     <div>Status: {props.profile.aboutMe}</div>
                     <div>Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
                     <div>Looking for a job description = {props.profile.lookingForAJobDescription}</div>
