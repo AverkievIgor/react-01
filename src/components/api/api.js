@@ -37,10 +37,23 @@ const instance = axios.create({
      },
 
      getProfile(userId){
-         return instance.get(`profile/` + userId );
+         console.warn('Старое API, надо использовать новое: profileApi.getProfile')
+         return profileAPI.getProfile(userId)
 
      }
  }
+export const profileAPI = {
+    getProfile(userId) {
+        debugger;
+        return instance.get(`profile/`+ userId);
+    },
+    getStatus(userId){
+        return instance.get('profile/status/'+ userId);
+    },
+    updateStatus(status) {
+        return instance.put('profile/status', {status: status})
+    }
+}
 
  export const authAPI = {
      me() {

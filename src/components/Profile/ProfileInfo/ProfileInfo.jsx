@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
                     <img src={props.profile.photos.large != null ? props.profile.photos.large : ava}/>
                     <div>Full name = {props.profile.fullName}</div>
                     {/*----STATUS------*/}
-                    <ProfileStatus status={'Follow me my Friend!)'}/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                     {/*----STATUS_END------*/}
                     <div>Status: {props.profile.aboutMe}</div>
                     <div>Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
@@ -28,7 +28,6 @@ const ProfileInfo = (props) => {
                 <div>Social:
                     <ul>
                         <li>{props.profile.contacts.facebook != null ?
-
                             <div>Facebook: <a href={+props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a></div> :
                             <div>Facebook: none</div>}</li>
                         <li>{props.profile.contacts.website != null ?
