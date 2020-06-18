@@ -90,7 +90,6 @@ export const setStatus = (status) => {
 export const getUserProfile = (userId) => (dispatch) => {
     useraAPI.getProfile(userId)
         .then(response => {
-            debugger;
             dispatch(setUserProfile(response.data));
         });
 }
@@ -98,7 +97,6 @@ export const getUserProfile = (userId) => (dispatch) => {
 export const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
-            debugger;
             dispatch(setStatus(response.data));
         });
 }
