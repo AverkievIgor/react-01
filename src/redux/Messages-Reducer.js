@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogsData: [
@@ -14,60 +13,30 @@ let initialState = {
         {id: 1, message: 'HI'},
         {id: 2, message: 'LOL =)'},
         {id: 3, message: 'May be yore are cow ?'}
-    ],
-    newMessageText:''
+    ]
 }
+
 
 const MessagesReducer = (state = initialState, action) => { /*state= state.MessagePage*/
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT: {
+        case ADD_MESSAGE:
+            let body = action.newMessageText;
             return  {
                 ...state,
-                newMessageText: action.newText
-            }
-
-        }
-        case ADD_MESSAGE: {
-            /*let newMessage = {
-                id: (stateCopy.messageData.length + 1),
-                message: stateCopy.newMessageText
-            };*/
-            //let body = state.newMessageText;
-            return  {
-                ...state,
-                newMessageText: '',
                 messageData:  [...state.messageData, {id: (state.messageData.length + 1),
-                    message: state.newMessageText}]
+                    message: action.newMessageText}]
             }
-
-        }
          default:
             return state;
     }
-
-        /*if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                id: (state.messageData.length + 1),
-                message: state.newMessageText
-            };
-            state.messageData.push(newMessage);
-            state.newMessageText = '';
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-           state.newMessageText = action.newText;
-        }
-    return state*/
 }
 
-export const addMessageActionCreate = () => {
+export const addMessageActionCreate = (newMessageText) => {
     return (
-        {type: ADD_MESSAGE}
+        {type: ADD_MESSAGE, newMessageText}
     )
 }
-export const updateNewMessageTextActionCreate = (text) => {
-    return (
-        {type: UPDATE_NEW_MESSAGE_TEXT, newText: text}
-    )
-}
+
 
 export default MessagesReducer;

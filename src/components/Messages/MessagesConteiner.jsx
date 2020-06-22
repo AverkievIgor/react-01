@@ -1,5 +1,5 @@
 import React from "react";
-import {addMessageActionCreate, updateNewMessageTextActionCreate} from "../../redux/Messages-Reducer";
+import {addMessageActionCreate} from "../../redux/Messages-Reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
@@ -32,9 +32,10 @@ import {compose} from "redux";
 let mapStateToProps = (state) => {
     return {MessagesPage: state.MessagesPage}}
 let mapDispatchToProps = (dispatch) => {
-    return {addMessage: () => {
-            dispatch(addMessageActionCreate())},
-        MessageChange: (text) => {dispatch(updateNewMessageTextActionCreate(text))}
+    return {
+        addMessage: (newMessageText) => {
+            dispatch(addMessageActionCreate(newMessageText))
+        }
     }
 }
 /*let AuthRedirectCoponent = withAuthRedirect(Messages);
