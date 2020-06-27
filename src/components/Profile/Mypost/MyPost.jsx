@@ -2,13 +2,16 @@ import React from "react";
 import s from "./Mypost.module.css"
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../utils/validator/validators";
+import {Textarea} from "../../common/FormsControl/FormsControl";
 
+const maxLength10 = maxLengthCreator(10)
 
 let AddNewPostForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component="textarea" name="newPostText"/>
+                <Field component={Textarea} name="newPostText" validate={[required, maxLength10]}/>
             </div>
             <div className={s.but}>
                 <button className={s.button}>Send</button>
@@ -31,17 +34,6 @@ const MyPost = (props) => {
         <div className={s.MyPost}>
             <h3>My post</h3>
             <AddNewPostFormRedux onSubmit={onAddPost}/>
-            {/*<div >
-                <div>
-                    <textarea className={s.textarea}
-                              ref={newPostElement} value={props.newPostText}
-                              onChange={onPostChange}/>
-                </div>
-                <div className={s.but}>
-                    <button className={s.button} onClick={()=> {onAddPost()}}>Send</button>
-                    <button className={s.button}>Clear</button>
-                </div>
-            </div>*/}
             <div className={s.posts}>
                 {postElements.reverse()}
             </div>
